@@ -24,11 +24,11 @@
 
 ## Introduction
 
-ScreenMyTalent is an innovative AI-driven screening platform designed to revolutionize the recruitment process. By leveraging advanced voice AI technology, ScreenMyTalent automates initial candidate interviews, providing quick, efficient, and unbiased evaluations. 
+RevolvingRock is an innovative AI-driven screening platform designed to revolutionize the recruitment process. By leveraging advanced voice AI technology, RevolvingRock automates initial candidate interviews, providing quick, efficient, and unbiased evaluations. 
 <br />
-This streamlined approach not only saves valuable time for HR professionals but also ensures a consistent and fair screening process. With its ability to operate 24/7, ScreenMyTalent is ideal for both local and international recruitment, accommodating candidates from different time zones seamlessly. 
+This streamlined approach not only saves valuable time for HR professionals but also ensures a consistent and fair screening process. With its ability to operate 24/7, RevolvingRock is ideal for both local and international recruitment, accommodating candidates from different time zones seamlessly. 
 <br />
-Whether you’re a small business or a large enterprise, ScreenMyTalent enhances your talent acquisition strategy, making hiring faster, smarter, and more effective.
+Whether you’re a small business or a large enterprise, RevolvingRock enhances your talent acquisition strategy, making hiring faster, smarter, and more effective.
 
 ## Installation
 
