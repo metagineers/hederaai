@@ -17,6 +17,8 @@ import { ModalContext } from "@/components/modals/providers";
 import { Icons } from "@/components/shared/icons";
 import MaxWidthWrapper from "@/components/shared/max-width-wrapper";
 
+import Image from "next/image";
+
 interface NavBarProps {
   scroll?: boolean;
   large?: boolean;
@@ -49,7 +51,7 @@ export function NavBar({ scroll = false }: NavBarProps) {
       >
         <div className="flex gap-6 md:gap-10">
           <Link href="/" className="flex items-center space-x-1.5">
-            <Icons.logo />
+            <Image src={siteConfig.logo} alt={siteConfig.name} width={40} height={40} />
             <span className="font-urban text-xl font-bold">
               {siteConfig.name}
             </span>

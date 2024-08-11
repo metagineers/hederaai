@@ -7,6 +7,9 @@ import { buttonVariants } from "@/components/ui/button";
 import { UserAuthForm } from "@/components/forms/user-auth-form";
 import { Icons } from "@/components/shared/icons";
 
+import Image from 'next/image';
+import { siteConfig } from "@/config/site";
+
 export const metadata: Metadata = {
   title: "Login",
   description: "Login to your account",
@@ -29,7 +32,7 @@ export default function LoginPage() {
       </Link>
       <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
         <div className="flex flex-col space-y-2 text-center">
-          <Icons.logo className="mx-auto size-6" />
+          <Image src={siteConfig.logo} alt={siteConfig.name} width={100} height={100} className="mx-auto"  />
           <h1 className="text-2xl font-semibold tracking-tight">
             Welcome back
           </h1>

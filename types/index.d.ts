@@ -4,6 +4,7 @@ import type { Icon } from "lucide-react";
 import { Icons } from "@/components/shared/icons";
 
 export type SiteConfig = {
+  logo: string;
   name: string;
   description: string;
   url: string;
