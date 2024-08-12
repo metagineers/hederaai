@@ -13,6 +13,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+
+import Image from "next/image";
+
 import {
   Tooltip,
   TooltipContent,
@@ -72,8 +75,11 @@ export function DashboardSidebar({ links }: DashboardSidebarProps) {
           >
             <div className="flex h-full max-h-screen flex-1 flex-col gap-2">
               <div className="flex h-14 items-center p-4 lg:h-[60px]">
-                {isSidebarExpanded ? <ProjectSwitcher /> : null}
-
+                {/* {isSidebarExpanded ? <ProjectSwitcher /> : null} */}
+                {isSidebarExpanded ? <>
+                  <Image src={siteConfig.logo} alt={siteConfig.name} width={25} height={25} className="mx-auto"  />
+                 <h1>Revolving Rock</h1>
+                </> : null}
                 <Button
                   variant="ghost"
                   size="icon"

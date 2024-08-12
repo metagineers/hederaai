@@ -65,24 +65,13 @@ async function describeImage(imageBase64: string) {
         await new Promise(resolve => setTimeout(resolve, 5000))
 
         text = `
-      The books in this image are:
-
-      1. The Little Prince by Antoine de Saint-Exupéry
-      2. The Prophet by Kahlil Gibran
-      3. Man's Search for Meaning by Viktor Frankl
-      4. The Alchemist by Paulo Coelho
-      5. The Kite Runner by Khaled Hosseini
-      6. To Kill a Mockingbird by Harper Lee
-      7. The Catcher in the Rye by J.D. Salinger
-      8. The Great Gatsby by F. Scott Fitzgerald
-      9. 1984 by George Orwell
-      10. Animal Farm by George Orwell
+      Image cannot be processed. Please try again with a different image.
       `
       } else {
         const imageData = imageBase64.split(',')[1]
 
         const model = genAI.getGenerativeModel({ model: 'gemini-1.5-pro-latest' })
-        const prompt = 'List the books in this image.'
+        const prompt = 'Describe the image.'
         const image = {
           inlineData: {
             data: imageData,
@@ -617,7 +606,7 @@ export const AI = createAI<AIState, UIState>({
   },
   initialUIState: [],
   initialAIState: { chatId: nanoid(), interactions: [], messages: [] },
-  unstable_onGetUIState: async () => {
+  onGetUIState: async () => {
     'use server'
 
     const session = await auth()
@@ -633,7 +622,7 @@ export const AI = createAI<AIState, UIState>({
       return
     }
   },
-  unstable_onSetAIState: async ({ state }) => {
+  onSetAIState: async ({ state }) => {
     'use server'
 
     const session = await auth()
