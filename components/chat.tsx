@@ -80,5 +80,5 @@ export function Chat({ id, className, session, missingKeys }: ChatProps) {
         scrollToBottom={scrollToBottom}
       />
     </div>
-  )
+  )       
 }
