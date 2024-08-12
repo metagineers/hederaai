@@ -10,7 +10,7 @@ import { MemoizedReactMarkdown } from '../markdown'
 import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
 import { StreamableValue } from 'ai/rsc'
-import { useStreamableText } from '@/lib/hooks/use-streamable-text'
+import { useStreamableText } from '@/hooks/use-streamable-text'
 
 // Different types of message bubbles.
 
@@ -49,15 +49,21 @@ export function BotMessage({
             p({ children }) {
               return <p className="mb-2 last:mb-0">{children}</p>
             },
-            code({ node, inline, className, children, ...props }) {
-              if (children.length) {
+            code({ node, inline, className, children, ...props }: {
+              node: any,
+              inline: boolean,
+              className: string,
+              children: React.ReactNode,
+              props: any
+            }) {
+              if (typeof children === 'string' && children.length) {
                 if (children[0] == '▍') {
                   return (
                     <span className="mt-1 animate-pulse cursor-default">▍</span>
                   )
                 }
-
-                children[0] = (children[0] as string).replace('`▍`', '▍')
+              
+                children = children.replace('`▍`', '▍');
               }
 
               const match = /language-(\w+)/.exec(className || '')
