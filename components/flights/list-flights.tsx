@@ -63,7 +63,7 @@ export const ListFlights = ({
 
   return (
     <div className="grid gap-2 rounded-2xl border border-zinc-200 bg-white p-2 sm:p-4">
-      <div className="grid gap-2 sm:flex sm:flex-row justify-between border-b p-2">
+      <div className="grid justify-between gap-2 border-b p-2 sm:flex sm:flex-row">
         <div className="sm:basis-1/4">
           <div className="text-xs text-zinc-600">Departure</div>
           <div className="font-medium">{departingCity}</div>
@@ -73,8 +73,8 @@ export const ListFlights = ({
           <div className="font-medium">{arrivalCity}</div>
         </div>
         <div className="sm:basis-1/2">
-          <div className="sm:text-right text-xs text-zinc-600">Date</div>
-          <div className="sm:text-right font-medium">{date}</div>
+          <div className="text-xs text-zinc-600 sm:text-right">Date</div>
+          <div className="font-medium sm:text-right">{date}</div>
         </div>
       </div>
       <div className="grid gap-3">
@@ -82,7 +82,7 @@ export const ListFlights = ({
           flights.map(flight => (
             <div
               key={flight.id}
-              className="flex cursor-pointer flex-row items-start sm:items-center gap-4 rounded-xl p-2 hover:bg-zinc-50"
+              className="flex cursor-pointer flex-row items-start gap-4 rounded-xl p-2 hover:bg-zinc-50 sm:items-center"
               onClick={async () => {
                 const response = await submitUserMessage(
                   `The user has selected flight ${flight.airlines}, departing at ${flight.departureTime} and arriving at ${flight.arrivalTime} for $${flight.price}. Now proceeding to select seats.`
@@ -93,14 +93,14 @@ export const ListFlights = ({
                 ])
               }}
             >
-              <div className="w-10 sm:w-12 shrink-0 aspect-square rounded-lg bg-zinc-50 overflow-hidden">
+              <div className="aspect-square w-10 shrink-0 overflow-hidden rounded-lg bg-zinc-50 sm:w-12">
                 <img
                   src="https://www.gstatic.com/flights/airline_logos/70px/UA.png"
-                  className="object-cover aspect-square"
+                  className="aspect-square object-cover"
                   alt="airline logo"
                 />
               </div>
-              <div className="grid gap-4 sm:grid-cols-4 items-start sm:gap-6 flex-1">
+              <div className="grid flex-1 items-start gap-4 sm:grid-cols-4 sm:gap-6">
                 <div className="col-span-2">
                   <div className="font-medium">
                     {flight.departureTime} - {flight.arrivalTime}
@@ -116,10 +116,10 @@ export const ListFlights = ({
                   </div>
                 </div>
                 <div>
-                  <div className="sm:text-right font-medium font-mono">
+                  <div className="font-mono font-medium sm:text-right">
                     ${flight.price}
                   </div>
-                  <div className="sm:text-right text-xs text-zinc-600">
+                  <div className="text-xs text-zinc-600 sm:text-right">
                     One Way
                   </div>
                 </div>

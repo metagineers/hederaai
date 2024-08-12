@@ -41,12 +41,12 @@ export const SelectSeats = ({
         Great! Here are the available seats for your flight. Please select a
         seat to continue.
       </p>
-      <div className="grid gap-4 p-4 sm:p-6 border border-zinc-200 rounded-2xl bg-white">
+      <div className="grid gap-4 rounded-2xl border border-zinc-200 bg-white p-4 sm:p-6">
         <div className="flex items-center gap-4">
-          <div className="w-10 sm:w-12 shrink-0 aspect-square rounded-lg bg-zinc-50 overflow-hidden">
+          <div className="aspect-square w-10 shrink-0 overflow-hidden rounded-lg bg-zinc-50 sm:w-12">
             <img
               src="https://www.gstatic.com/flights/airline_logos/70px/UA.png"
-              className="object-cover aspect-square"
+              className="aspect-square object-cover"
               alt="airline logo"
             />
           </div>
@@ -59,8 +59,8 @@ export const SelectSeats = ({
             </div>
           </div>
         </div>
-        <div className="relative flex w-ful p-4 sm:p-6 justify-center rounded-xl sm:rounded-lg bg-zinc-50">
-          <div className="flex flex-col gap-4 p-4 border border-zinc-200 rounded-lg bg-zinc-50">
+        <div className="w-ful relative flex justify-center rounded-xl bg-zinc-50 p-4 sm:rounded-lg sm:p-6">
+          <div className="flex flex-col gap-4 rounded-lg border border-zinc-200 bg-zinc-50 p-4">
             {[4, 3, 2, 1].map((row, rowIndex) => (
               <div key={`row-${rowIndex}`} className="flex flex-row gap-3">
                 {['A', 'B', 0, 'C', 'D'].map((seat, seatIndex) => (
@@ -87,7 +87,7 @@ export const SelectSeats = ({
                     }}
                   >
                     {seatIndex === 2 ? (
-                      <div className="w-6 text-sm text-center tabular-nums text-zinc-500">
+                      <div className="w-6 text-center text-sm tabular-nums text-zinc-500">
                         {row}
                       </div>
                     ) : (
@@ -109,7 +109,7 @@ export const SelectSeats = ({
               {['A', 'B', '', 'C', 'D'].map((seat, index) => (
                 <div
                   key={index}
-                  className="w-6 text-sm text-center shrink-0 text-zinc-500"
+                  className="w-6 shrink-0 text-center text-sm text-zinc-500"
                 >
                   {seat}
                 </div>
@@ -119,11 +119,11 @@ export const SelectSeats = ({
         </div>
       </div>
       {selectedSeat !== '' && (
-        <div className="flex flex-col sm:flex-row items-start gap-2">
+        <div className="flex flex-col items-start gap-2 sm:flex-row">
           {suggestions.map(suggestion => (
             <button
               key={suggestion}
-              className="flex items-center gap-2 px-3 py-2 text-sm transition-colors bg-zinc-50 hover:bg-zinc-100 rounded-xl cursor-pointer"
+              className="flex cursor-pointer items-center gap-2 rounded-xl bg-zinc-50 px-3 py-2 text-sm transition-colors hover:bg-zinc-100"
               onClick={async () => {
                 const response = await submitUserMessage(suggestion, [])
                 setMessages((currentMessages: any[]) => [

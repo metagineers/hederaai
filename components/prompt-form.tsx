@@ -140,7 +140,7 @@ export function PromptForm({
           tabIndex={0}
           onKeyDown={onKeyDown}
           placeholder="Send a message."
-          className="min-h-[60px] w-full bg-transparent placeholder:text-zinc-900 resize-none px-4 py-[1.3rem] focus-within:outline-none sm:text-sm"
+          className="min-h-[60px] w-full resize-none bg-transparent px-4 py-[1.3rem] placeholder:text-zinc-900 focus-within:outline-none sm:text-sm"
           autoFocus
           spellCheck={false}
           autoComplete="off"
@@ -157,7 +157,7 @@ export function PromptForm({
                 type="submit"
                 size="icon"
                 disabled={input === ''}
-                className="bg-transparent shadow-none text-zinc-950 rounded-full hover:bg-zinc-200"
+                className="rounded-full bg-transparent text-zinc-950 shadow-none hover:bg-zinc-200"
               >
                 <IconArrowElbow />
                 <span className="sr-only">Send message</span>

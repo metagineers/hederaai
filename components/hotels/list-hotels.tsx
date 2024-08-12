@@ -46,11 +46,11 @@ export const ListHotels = ({
         We recommend a 3 night stay in Rome. Here are some hotels you can choose
         from.
       </p>
-      <div className="grid gap-4 p-2 sm:p-4 border border-zinc-200 rounded-2xl bg-white">
+      <div className="grid gap-4 rounded-2xl border border-zinc-200 bg-white p-2 sm:p-4">
         {hotels.map(hotel => (
           <div
             key={hotel.id}
-            className="p-2 flex justify-between hover:bg-zinc-50 rounded-xl cursor-pointer gap-4"
+            className="flex cursor-pointer justify-between gap-4 rounded-xl p-2 hover:bg-zinc-50"
             onClick={async () => {
               const response = await submitUserMessage(
                 `I want to book the ${hotel.name}, proceed to checkout by calling checkoutBooking function.`
@@ -61,10 +61,10 @@ export const ListHotels = ({
               ])
             }}
           >
-            <div className="flex flex-col sm:flex-row gap-4">
-              <div className="w-20 bg-zinc-100 aspect-video rounded-lg overflow-hidden">
+            <div className="flex flex-col gap-4 sm:flex-row">
+              <div className="aspect-video w-20 overflow-hidden rounded-lg bg-zinc-100">
                 <img
-                  className="object-cover aspect-video h-full rounded-lg"
+                  className="aspect-video h-full rounded-lg object-cover"
                   src={`/images/${hotel.id}.jpg`}
                 />
               </div>
@@ -74,10 +74,10 @@ export const ListHotels = ({
               </div>
             </div>
             <div className="shrink-0">
-              <div className="text-lg font-medium text-right">
+              <div className="text-right text-lg font-medium">
                 ${hotel.price}
               </div>
-              <div className="text-zinc-600 text-xs text-right">per night</div>
+              <div className="text-right text-xs text-zinc-600">per night</div>
             </div>
           </div>
         ))}

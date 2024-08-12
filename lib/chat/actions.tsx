@@ -540,7 +540,7 @@ export async function validateCode() {
     await sleep(2000)
 
     ui.done(
-      <div className="flex flex-col items-center text-center justify-center gap-3 p-4 text-emerald-700">
+      <div className="flex flex-col items-center justify-center gap-3 p-4 text-center text-emerald-700">
         <CheckIcon />
         <div>Payment Succeeded</div>
         <div className="text-sm text-zinc-600">
@@ -657,27 +657,27 @@ export const getUIStateFromAIState = (aiState: Chat) => {
         message.role === 'assistant' ? (
           message.display?.name === 'showFlights' ? (
             <BotCard>
-              <ListFlights summary={message.display.props.summary} />
+              {/* <ListFlights summary={message.display.props.summary} /> */}
             </BotCard>
           ) : message.display?.name === 'showSeatPicker' ? (
             <BotCard>
-              <SelectSeats summary={message.display.props.summary} />
+              {/* <SelectSeats summary={message.display.props.summary} /> */}
             </BotCard>
           ) : message.display?.name === 'showHotels' ? (
             <BotCard>
-              <ListHotels />
+              {/* <ListHotels /> */}
             </BotCard>
           ) : message.content === 'The purchase has completed successfully.' ? (
             <BotCard>
-              <PurchaseTickets status="expired" />
+              {/* <PurchaseTickets status="expired" /> */}
             </BotCard>
           ) : message.display?.name === 'showBoardingPass' ? (
             <BotCard>
-              <BoardingPass summary={message.display.props.summary} />
+              {/* <BoardingPass summary={message.display.props.summary} /> */}
             </BotCard>
           ) : message.display?.name === 'listDestinations' ? (
             <BotCard>
-              <Destinations destinations={message.display.props.destinations} />
+              {/* <Destinations destinations={message.display.props.destinations} /> */}
             </BotCard>
           ) : (
             <BotMessage content={message.content} />

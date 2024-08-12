@@ -17,7 +17,7 @@ import { useStreamableText } from '@/hooks/use-streamable-text'
 export function UserMessage({ children }: { children: React.ReactNode }) {
   return (
     <div className="group relative flex items-start md:-ml-12">
-      <div className="bg-background flex size-[25px] shrink-0 select-none items-center justify-center rounded-lg border shadow-sm">
+      <div className="flex size-[25px] shrink-0 select-none items-center justify-center rounded-lg border bg-background shadow-sm">
         <IconUser />
       </div>
       <div className="ml-4 flex-1 space-y-2 overflow-hidden pl-2">
@@ -38,7 +38,7 @@ export function BotMessage({
 
   return (
     <div className={cn('group relative flex items-start md:-ml-12', className)}>
-      <div className="bg-background flex size-[25px] shrink-0 select-none items-center justify-center rounded-lg border shadow-sm">
+      <div className="flex size-[25px] shrink-0 select-none items-center justify-center rounded-lg border bg-background shadow-sm">
         <img className="size-6" src="/images/gemini.png" alt="gemini logo" />
       </div>
       <div className="ml-4 flex-1 space-y-2 overflow-hidden px-1">
@@ -105,7 +105,7 @@ export function BotCard({
     <div className="group relative flex items-start md:-ml-12">
       <div
         className={cn(
-          'bg-background flex size-[25px] shrink-0 select-none items-center justify-center rounded-lg border shadow-sm',
+          'flex size-[25px] shrink-0 select-none items-center justify-center rounded-lg border bg-background shadow-sm',
           !showAvatar && 'invisible'
         )}
       >
@@ -131,10 +131,10 @@ export function SystemMessage({ children }: { children: React.ReactNode }) {
 export function SpinnerMessage() {
   return (
     <div className="group relative flex items-start md:-ml-12">
-      <div className="bg-background flex size-[25px] shrink-0 select-none items-center justify-center rounded-lg border shadow-sm">
+      <div className="flex size-[25px] shrink-0 select-none items-center justify-center rounded-lg border bg-background shadow-sm">
         <img className="size-6" src="/images/gemini.png" alt="gemini logo" />
       </div>
-      <div className="ml-4 h-[24px] flex flex-row items-center flex-1 space-y-2 overflow-hidden px-1">
+      <div className="ml-4 flex h-[24px] flex-1 flex-row items-center space-y-2 overflow-hidden px-1">
         {spinner}
       </div>
     </div>
