@@ -167,7 +167,7 @@ export function DashboardSidebar({ links }: DashboardSidebarProps) {
                 ))}
               </nav>
 
-              <div className="mt-auto xl:p-4">
+              <div className="mt-auto xl:p-4 -z-50">
                 {isSidebarExpanded ? <UpgradeCard /> : null}
               </div>
             </div>
