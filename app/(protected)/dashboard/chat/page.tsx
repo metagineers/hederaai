@@ -3,7 +3,7 @@ import { Chat } from '@/components/chat'
 import { AI } from '@/lib/chat/actions'
 import { auth } from '@/auth'
 import { Session } from '@/lib/types'
-import { getMissingKeys } from '../../../../actions'
+import { getMissingKeys } from '../../../actions'
 
 import { redirect } from "next/navigation";
 import { getCurrentUser } from "@/lib/session";
@@ -26,10 +26,10 @@ export default async function IndexPage() {
 
   return (
     <>
-    <DashboardHeader
+    {/* <DashboardHeader
       heading="Chat"
       text="Chat with RedQueen, your personal assistant here."
-    />
+    /> */}
     <div className="divide-y divide-muted pb-10">
       <AI initialAIState={{ chatId: id, interactions: [], messages: [] }}>
         <Chat id={id} session={session} missingKeys={missingKeys} />

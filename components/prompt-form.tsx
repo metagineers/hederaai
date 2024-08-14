@@ -97,13 +97,8 @@ export function PromptForm({
 
           const file = event.target.files[0]
 
-          if (file.type.startsWith('video/')) {
-            const responseMessage = await describeImage('')
-            setMessages(currentMessages => [
-              ...currentMessages,
-              responseMessage
-            ])
-          } else {
+          // only image filetypes are being handled
+          if (file.type.startsWith('image/')) {
             const reader = new FileReader()
             reader.readAsDataURL(file)
 
@@ -115,6 +110,12 @@ export function PromptForm({
                 responseMessage
               ])
             }
+          } else {
+            const responseMessage = await describeImage('')
+            setMessages(currentMessages => [
+              ...currentMessages,
+              responseMessage
+            ])
           }
         }}
       />

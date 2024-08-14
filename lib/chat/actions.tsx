@@ -33,6 +33,7 @@ import { z } from 'zod'
 // import { ListHotels } from '@/components/hotels/list-hotels'
 // import { Destinations } from '@/components/flights/destinations'
 import { Video } from '@/components/media/video'
+import { Image } from '@/components/media/image'
 import { rateLimit } from './ratelimit'
 
 const genAI = new GoogleGenerativeAI(
@@ -51,7 +52,7 @@ async function describeImage(imageBase64: string) {
 
   uiStream.update(
     <BotCard>
-      <Video isLoading />
+        <Image isLoading />
     </BotCard>
   )
   ;(async () => {
@@ -65,7 +66,7 @@ async function describeImage(imageBase64: string) {
         await new Promise(resolve => setTimeout(resolve, 5000))
 
         text = `
-      Image cannot be processed. Please try again with a different image.
+      I can only process image file at the moment. Please try again with an image file.
       `
       } else {
         const imageData = imageBase64.split(',')[1]
@@ -89,7 +90,14 @@ async function describeImage(imageBase64: string) {
 
       uiStream.done(
         <BotCard>
-          <Video />
+          {imageBase64 ? (
+            <>
+              <img src={imageBase64} alt="Submitted Image" />
+              <BotMessage content={text} />
+            </>
+          ) : (
+          <Image />
+          )}
         </BotCard>
       )
 
@@ -278,17 +286,17 @@ async function submitUserMessage(content: string) {
           textContent += textDelta
           messageStream.update(<BotMessage content={textContent} />)
 
-          aiState.update({
-            ...aiState.get(),
-            messages: [
-              ...aiState.get().messages,
-              {
-                id: nanoid(),
-                role: 'assistant',
-                content: textContent
-              }
-            ]
-          })
+          // aiState.update({
+          //   ...aiState.get(),
+          //   messages: [
+          //     ...aiState.get().messages,
+          //     {
+          //       id: nanoid(),
+          //       role: 'assistant',
+          //       content: textContent
+          //     }
+          //   ]
+          // })
         } else if (type === 'tool-call') {
           const { toolName, args } = delta
           console.log(toolName, args)
@@ -467,6 +475,20 @@ async function submitUserMessage(content: string) {
       uiStream.done()
       textStream.done()
       messageStream.done()
+      aiState.done({
+        ...aiState.get(),
+        messages: [
+          ...aiState.get().messages,
+          {
+            id: nanoid(),
+            role: 'assistant',
+            content: textContent
+          }
+        ]
+      })
+      // aiState.done({
+      //   ...aiState.get()
+      // })
     } catch (e) {
       console.error(e)
 
@@ -616,23 +638,29 @@ export const AI = createAI<AIState, UIState>({
 
       if (aiState) {
         const uiState = getUIStateFromAIState(aiState)
+        console.log(JSON.stringify("UIState: " + uiState))
         return uiState
       }
+      console.log("AIState: " + JSON.stringify(aiState))
     } else {
       return
     }
   },
-  onSetAIState: async ({ state }) => {
+  onSetAIState: async ({ state, done }) => {
     'use server'
+
+    console.log('AISTATE triggered', JSON.stringify(state))
 
     const session = await auth()
 
     if (session && session.user) {
       const { chatId, messages } = state
 
+      console.log(JSON.stringify(messages))
+
       const createdAt = new Date()
       const userId = session.user.id as string
-      const path = `/chat/${chatId}`
+      const path = `/dashboard/chat/${chatId}`
       const title = messages[0].content.substring(0, 100)
 
       const chat: Chat = {
@@ -643,8 +671,12 @@ export const AI = createAI<AIState, UIState>({
         messages,
         path
       }
-
-      await saveChat(chat)
+      console.log("done?:" + done)
+      if (done) {
+        console.log("Done AIState Streaming, hence saving...")
+        console.log("chat being saved: " + JSON.stringify(chat))
+        await saveChat(chat)
+      }
     } else {
       return
     }
