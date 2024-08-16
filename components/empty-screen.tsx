@@ -3,31 +3,30 @@ import { ExternalLink } from '@/components/external-link'
 export function EmptyScreen() {
   return (
     <div className="mx-auto max-w-2xl px-4">
-      <div className="flex flex-col gap-2 rounded-2xl bg-zinc-50 p-4 text-sm sm:p-8 sm:text-base">
-        <h1 className="inline-block max-w-fit text-2xl font-semibold tracking-tight sm:text-3xl">
-          Next.js Gemini Chatbot
+      <div className="flex flex-col gap-2 rounded-2xl bg-zinc-50 p-4 text-sm text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100 sm:p-8 sm:text-base">
+        <h1 className="inline-block max-w-fit text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-3xl">
+          Introducing RedQueen...
         </h1>
-        <p className="leading-normal text-zinc-900">
-          This is an open source AI chatbot app template built with{' '}
-          <ExternalLink href="https://nextjs.org">Next.js</ExternalLink>, the{' '}
-          <ExternalLink href="https://sdk.vercel.ai">
-            Vercel AI SDK
-          </ExternalLink>
-          , and{' '}
-          <ExternalLink href="https://ai.google.dev">
-            Google Gemini
+        <p className="leading-normal text-zinc-900 dark:text-zinc-100">
+          RedQueen is part of the{' '}
+          <ExternalLink href="https://revolvingrock.xyz">RevolvingRock</ExternalLink>, team of{' '}
+          <ExternalLink href="https://revolvingrock.xyz">
+            AI Agents
           </ExternalLink>
           .
         </p>
-        <p className="leading-normal text-zinc-900">
-          It uses{' '}
+        <p className="leading-normal text-zinc-900 dark:text-zinc-100">
+          RedQueen&apos;s main task is to get to know more about you so that the rest of the RevolvingRock{' '}
           <ExternalLink href="https://vercel.com/blog/ai-sdk-3-generative-ui">
-            React Server Components
+            EcoSystem
           </ExternalLink>{' '}
-          with function calling to mix both text with generative UI responses
-          from Gemini. The UI state is synced through the AI SDK so the model is
-          always aware of your stateful interactions as they happen in the
-          browser.
+         can serve you better. Have a natural conversation with RedQueen and treat it like an inquisitive friend
+         who is trying to get to know you better. 
+         </p>
+         <p className="leading-normal text-zinc-900 dark:text-zinc-100"> 
+          Tell it about your skills, interests, important personal 
+         information that you want to remember, your relationships and anything factual related to you that can be
+         used by the Revolving Rock team to better understand you and your needs.
         </p>
       </div>
     </div>

@@ -31,6 +31,8 @@ export function Chat({ id, className, session, missingKeys }: ChatProps) {
 
   const [_, setNewChatId] = useLocalStorage('newChatId', id)
 
+  console.log('In Chat Component . chat id is ', id)
+
   useEffect(() => {
     if (session?.user) {
       if (!path.includes('chat') && messages.length === 1) {
@@ -75,6 +77,7 @@ export function Chat({ id, className, session, missingKeys }: ChatProps) {
   
         <ChatPanel
           id={id}
+          // title={`Chat ${id}`}
           input={input}
           setInput={setInput}
           isAtBottom={isAtBottom}

@@ -112,6 +112,7 @@ export async function shareChat(id: string) {
 
   const chat = await kv.hgetall<Chat>(`chat:${id}`)
 
+  console.log("kv hgetall:" + JSON.stringify(chat))
   if (!chat || chat.userId !== session.user.id) {
     return {
       error: 'Something went wrong'

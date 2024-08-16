@@ -76,7 +76,7 @@ export function PromptForm({
                 rel="noopener noreferrer"
                 href="https://vercel.com/templates/next.js/gemini-ai-chatbot"
               >
-                deploy your own version
+                upgrade your subscription.
               </a>
               .
             </div>
@@ -119,9 +119,9 @@ export function PromptForm({
           }
         }}
       />
-      <div className="relative flex max-h-60 w-full grow flex-col overflow-hidden bg-zinc-100 px-12 sm:rounded-full sm:px-12">
-        {/* <Tooltip>
-          <TooltipTrigger asChild> */}
+  <div className="relative flex max-h-60 w-full grow flex-col overflow-hidden bg-zinc-100 px-12 dark:bg-zinc-800 sm:rounded-full sm:px-12">
+        <Tooltip>
+          <TooltipTrigger asChild>
         <Button
           variant="outline"
           size="icon"
@@ -133,15 +133,15 @@ export function PromptForm({
           <IconPlus />
           <span className="sr-only">New Chat</span>
         </Button>
-        {/* </TooltipTrigger>
+        </TooltipTrigger>
           <TooltipContent>Add Attachments</TooltipContent>
-        </Tooltip> */}
+        </Tooltip>
         <Textarea
           ref={inputRef}
           tabIndex={0}
           onKeyDown={onKeyDown}
           placeholder="Send a message."
-          className="min-h-[60px] w-full resize-none bg-transparent px-4 py-[1.3rem] placeholder:text-zinc-900 focus-within:outline-none sm:text-sm"
+          className="min-h-[60px] w-full resize-none bg-transparent px-4 py-[1.3rem] placeholder:text-zinc-900 focus-within:outline-none dark:placeholder:text-zinc-100 sm:text-sm"
           autoFocus
           spellCheck={false}
           autoComplete="off"
@@ -154,12 +154,12 @@ export function PromptForm({
         <div className="absolute right-4 top-[13px] sm:right-4">
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button
-                type="submit"
-                size="icon"
-                disabled={input === ''}
-                className="rounded-full bg-transparent text-zinc-950 shadow-none hover:bg-zinc-200"
-              >
+                <Button
+                  type="submit"
+                  size="icon"
+                  disabled={input === ''}
+                  className="rounded-full bg-transparent text-zinc-950 shadow-none hover:bg-zinc-200 dark:text-zinc-100 dark:hover:bg-zinc-700"
+                >
                 <IconArrowElbow />
                 <span className="sr-only">Send message</span>
               </Button>

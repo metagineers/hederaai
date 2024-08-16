@@ -15,7 +15,7 @@ export const metadata = constructMetadata({
   description: "Chat with RedQueen, your personal assistant here.",
 });
 
-export default async function IndexPage() {
+export default async function ChatIndexPage() {
   const user = await getCurrentUser();
 
   if (!user?.id) redirect("/login");
@@ -23,6 +23,8 @@ export default async function IndexPage() {
   const id = nanoid()
   const session = (await auth()) as Session
   const missingKeys = await getMissingKeys()
+
+  console.log("New chat id", id)
 
   return (
     <>
@@ -34,7 +36,7 @@ export default async function IndexPage() {
       <AI initialAIState={{ chatId: id, interactions: [], messages: [] }}>
         <Chat id={id} session={session} missingKeys={missingKeys} />
       </AI>
-      </div>
+    </div>
     </>
   )
 }

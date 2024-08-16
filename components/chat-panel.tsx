@@ -7,6 +7,7 @@ import { ButtonScrollToBottom } from '@/components/button-scroll-to-bottom'
 import { IconShare } from '@/components/ui/icons'
 import { FooterText } from '@/components/footer'
 import { ChatShareDialog } from '@/components/chat-share-dialog'
+import { ChatHistoryDialog } from '@/components/chat-history-dialog'
 import { useAIState, useActions, useUIState } from 'ai/rsc'
 import type { AI } from '@/lib/chat/actions'
 import { nanoid } from 'nanoid'
@@ -38,24 +39,44 @@ export function ChatPanel({
 
   const exampleMessages = [
     {
-      heading: 'List flights flying from',
-      subheading: 'San Francisco to Rome today',
-      message: `List flights flying from San Francisco to Rome today`
+      heading: 'Tell me what you have learnt so far',
+      subheading: 'about my interests?',
+      message: `List my interests`
     },
     {
-      heading: 'What is the status',
-      subheading: 'of flight BA142?',
-      message: 'What is the status of flight BA142?'
+      heading: 'How many skills do i have',
+      subheading: 'that are physical related',
+      message: 'List down all my physical skills'
     }
   ]
 
   return (
-    <div className="fixed inset-x-0 bottom-0 ml-10 w-full bg-white/10 duration-300 ease-in-out dark:from-10% peer-[[data-state=open]]:group-[]:lg:pl-[250px] peer-[[data-state=open]]:group-[]:xl:pl-[300px]">
+    <div className="fixed inset-x-0 bottom-0 w-full bg-white/10 duration-300 ease-in-out dark:bg-zinc-900/10 dark:from-10% peer-[[data-state=open]]:group-[]:lg:pl-[250px] peer-[[data-state=open]]:group-[]:xl:pl-[300px]">
       <ButtonScrollToBottom
-        isAtBottom={isAtBottom}
-        scrollToBottom={scrollToBottom}
+          isAtBottom={isAtBottom}
+          scrollToBottom={scrollToBottom}
       />
-
+      <div className="mx-auto sm:max-w-2xl sm:px-4">id {id} title {title}</div>
+      <div className="mx-auto sm:max-w-2xl sm:px-4">
+                  <Button
+                    variant="outline"
+                    onClick={() => setShareDialogOpen(true)}
+                  >
+                    <IconShare className="mr-2" />
+                    Chats
+                  </Button>
+                  <ChatHistoryDialog
+                    open={shareDialogOpen}
+                    onOpenChange={setShareDialogOpen}
+                    onCopy={() => setShareDialogOpen(false)}
+                    shareChat={shareChat}
+                    chat={{
+                      id: (id ?? ''),
+                      title: (title ?? ''),
+                      messages: aiState.messages
+                    }}
+                  />
+      </div>
       <div className="mx-auto sm:max-w-2xl sm:px-4">
         <div className="mb-4 grid gap-2 px-4 sm:grid-cols-2 sm:gap-4 sm:px-0">
           {messages.length === 0 &&
@@ -63,7 +84,7 @@ export function ChatPanel({
               <div
                 key={example.heading}
                 className={cn(
-                  'cursor-pointer rounded-2xl bg-zinc-50 p-4 text-zinc-950 transition-colors hover:bg-zinc-100 sm:p-6',
+                  'cursor-pointer rounded-2xl bg-zinc-50 p-4 text-zinc-950 transition-colors hover:bg-zinc-100 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700 sm:p-6',
                   index > 1 && 'hidden md:block'
                 )}
                 onClick={async () => {

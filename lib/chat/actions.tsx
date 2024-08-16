@@ -45,6 +45,8 @@ async function describeImage(imageBase64: string) {
 
   await rateLimit()
 
+  console.log("describe Image called")
+
   const aiState = getMutableAIState()
   const spinnerStream = createStreamableUI(null)
   const messageStream = createStreamableUI(null)

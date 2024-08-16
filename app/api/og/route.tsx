@@ -30,7 +30,7 @@ export async function GET(req: Request) {
 
     const fontSize = heading.length > 80 ? "60px" : "80px"
 
-    const githubName = "mickasmt";
+    const githubName = "goldzulu";
 
     return new ImageResponse(
       (
@@ -55,7 +55,7 @@ export async function GET(req: Request) {
               color: 'transparent'
             }}
           >
-            SaaS Starter
+            RevolvingRock
           </div>
 
           <div tw="flex flex-col flex-1 py-16">
@@ -102,7 +102,7 @@ export async function GET(req: Request) {
                 >
                   {githubName}
                 </div>
-                <div>Open Source Designer</div>
+                <div>Automating Information Flow</div>
               </div>
             </div>
 

@@ -7,7 +7,7 @@ import * as VisuallyHidden from '@radix-ui/react-visually-hidden';
 
 import { toast } from 'sonner'
 
-import { ServerActionResult, type Chat } from '@/lib/types'
+import { ServerActionResult, User, type Chat } from '@/lib/types'
 import { Button } from '@/components/ui/button'
 import {
   Dialog,
@@ -20,20 +20,26 @@ import {
 import { IconSpinner } from '@/components/ui/icons'
 import { useCopyToClipboard } from '@/hooks/use-copy-to-clipboard'
 
-interface ChatShareDialogProps extends DialogProps {
+import { ChatHistory } from './chat-history'
+
+import { useSession } from 'next-auth/react';
+
+interface ChatHistoryDialogProps extends DialogProps {
   chat: Pick<Chat, 'id' | 'title' | 'messages'>
   shareChat: (id: string) => ServerActionResult<Chat>
   onCopy: () => void
 }
 
-export function ChatShareDialog({
+export function ChatHistoryDialog({
   chat,
   shareChat,
   onCopy,
   ...props
-}: ChatShareDialogProps) {
+}: ChatHistoryDialogProps) {
   const { copyToClipboard } = useCopyToClipboard({ timeout: 1000 })
   const [isSharePending, startShareTransition] = React.useTransition()
+
+
 
   const copyShareLink = React.useCallback(
     async (chat: Chat) => {
@@ -50,13 +56,15 @@ export function ChatShareDialog({
     [copyToClipboard, onCopy]
   )
 
+  const { data: session, status } = useSession();
+
   return (
     <Dialog {...props}>
       <DialogContent>
         <DialogHeader>
-          <VisuallyHidden.Root><DialogTitle>Share link to chat</DialogTitle></VisuallyHidden.Root>
+          <DialogTitle>Chat History</DialogTitle>
           <DialogDescription>
-            Anyone with the URL will be able to view the shared chat.
+            <ChatHistory userId={session?.user.id} />
           </DialogDescription>
         </DialogHeader>
         <div className="space-y-1 rounded-lg border p-4 text-sm">
