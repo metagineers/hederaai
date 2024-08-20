@@ -108,7 +108,7 @@ export function ChatPanel({
                           className="underline"
                           target="_blank"
                           rel="noopener noreferrer"
-                          href="https://revolvingrock.xyz"
+                          href="https://hederaai.vercel.app"
                         >
                           upgrade your plan
                         </a>

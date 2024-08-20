@@ -9,14 +9,14 @@ export function EmptyScreen() {
         </h1>
         <p className="leading-normal text-zinc-900 dark:text-zinc-100">
           RedQueen is part of the{' '}
-          <ExternalLink href="https://revolvingrock.xyz">RevolvingRock</ExternalLink>, team of{' '}
-          <ExternalLink href="https://revolvingrock.xyz">
+          <ExternalLink href="https://hederaai.vercel.app">HederaAI</ExternalLink>, team of{' '}
+          <ExternalLink href="https://hederaai.vercel.app">
             AI Agents
           </ExternalLink>
           .
         </p>
         <p className="leading-normal text-zinc-900 dark:text-zinc-100">
-          RedQueen&apos;s main task is to get to know more about you so that the rest of the RevolvingRock{' '}
+          RedQueen&apos;s main task is to get to know more about you so that the rest of the HederaAI{' '}
           <ExternalLink href="https://vercel.com/blog/ai-sdk-3-generative-ui">
             EcoSystem
           </ExternalLink>{' '}

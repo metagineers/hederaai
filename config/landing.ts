@@ -4,7 +4,7 @@ export const infos: InfoLdg[] = [
   {
     title: "Empower Your Recruitment",
     description:
-      "Unlock the full potential of your recruitment process with RevolvingRock. Collaborate seamlessly, innovate effortlessly, and scale your hiring capabilities.",
+      "Unlock the full potential of your recruitment process with HederaAI. Collaborate seamlessly, innovate effortlessly, and scale your hiring capabilities.",
     image: "/_static/illustrations/work-from-home.jpg",
     list: [
       {
@@ -28,7 +28,7 @@ export const infos: InfoLdg[] = [
   {
     title: "Seamless Integration",
     description:
-      "Integrate RevolvingRock seamlessly into your existing HR workflows. Effortlessly connect with your favorite tools and services for a streamlined recruitment experience.",
+      "Integrate HederaAI seamlessly into your existing HR workflows. Effortlessly connect with your favorite tools and services for a streamlined recruitment experience.",
     image: "/_static/illustrations/work-from-home.jpg",
     list: [
       {
@@ -103,48 +103,48 @@ export const testimonials: TestimonialType[] = [
     job: "HR Manager",
     image: "https://randomuser.me/api/portraits/men/1.jpg",
     review:
-      "RevolvingRock has truly revolutionized our hiring process. With its comprehensive features and seamless integration, we've been able to screen and recruit top talent faster than ever before. The documentation is clear and concise, making it easy to navigate through the setup process. I highly recommend RevolvingRock to any HR professional.",
+      "HederaAI has truly revolutionized our hiring process. With its comprehensive features and seamless integration, we've been able to screen and recruit top talent faster than ever before. The documentation is clear and concise, making it easy to navigate through the setup process. I highly recommend HederaAI to any HR professional.",
   },
   {
     name: "Alice Smith",
     job: "Recruitment Specialist",
     image: "https://randomuser.me/api/portraits/women/2.jpg",
     review:
-      "Thanks to RevolvingRock, I've been able to create efficient and effective recruitment campaigns in record time. The platform provides a solid foundation for building a streamlined hiring process, allowing me to focus more on strategic HR tasks.",
+      "Thanks to HederaAI, I've been able to create efficient and effective recruitment campaigns in record time. The platform provides a solid foundation for building a streamlined hiring process, allowing me to focus more on strategic HR tasks.",
   },
   {
     name: "David Johnson",
     job: "Talent Acquisition Lead",
     image: "https://randomuser.me/api/portraits/men/3.jpg",
     review:
-      "RevolvingRock has streamlined our entire recruitment process, making it easier to find and hire the best candidates. The AI-driven screening has saved us countless hours and provided valuable insights into our candidate pool.",
+      "HederaAI has streamlined our entire recruitment process, making it easier to find and hire the best candidates. The AI-driven screening has saved us countless hours and provided valuable insights into our candidate pool.",
   },
   {
     name: "Michael Wilson",
     job: "Project Manager",
     image: "https://randomuser.me/api/portraits/men/5.jpg",
     review:
-      "I'm impressed by the quality of the AI screening and the clear documentation of RevolvingRock. Kudos to the team!",
+      "I'm impressed by the quality of the AI screening and the clear documentation of HederaAI. Kudos to the team!",
   },
   {
     name: "Sophia Garcia",
     job: "HR Consultant",
     image: "https://randomuser.me/api/portraits/women/6.jpg",
     review:
-      "RevolvingRock provided us with the tools we needed to efficiently manage our recruitment process. Thank you so much!",
+      "HederaAI provided us with the tools we needed to efficiently manage our recruitment process. Thank you so much!",
   },
   {
     name: "Emily Brown",
     job: "Talent Manager",
     image: "https://randomuser.me/api/portraits/women/4.jpg",
     review:
-      "RevolvingRock has been an invaluable asset in my role as a talent manager. With its seamless integration, I've been able to launch targeted recruitment campaigns more effectively.",
+      "HederaAI has been an invaluable asset in my role as a talent manager. With its seamless integration, I've been able to launch targeted recruitment campaigns more effectively.",
   },
   {
     name: "Jason Stan",
     job: "HR Director",
     image: "https://randomuser.me/api/portraits/men/9.jpg",
     review:
-      "Thanks to RevolvingRock, we've been able to improve our recruitment process significantly. The platform provides a solid foundation for building a streamlined and efficient hiring process.",
+      "Thanks to HederaAI, we've been able to improve our recruitment process significantly. The platform provides a solid foundation for building a streamlined and efficient hiring process.",
   },
 ];

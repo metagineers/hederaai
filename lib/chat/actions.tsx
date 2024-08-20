@@ -377,7 +377,7 @@ async function submitUserMessage(content: string) {
         * assets: the user have in the form of possession physical or otherwise
         * relationships: the user's relationships with the others, such as family, friends, and acquaintances
         * others: anything that doesn't fit the above categories but the user would like to remember
-        The key feature of RevolvingRock is that you understand that information is normally changing and are not static. So every new interaction with the user, reassess the state of your knowledge and form an updated one. When in doubt, ask if information given are conflicting and clarify. The one that are latest always take precedence.
+        The key feature of HederaAI is that you understand that information is normally changing and are not static. So every new interaction with the user, reassess the state of your knowledge and form an updated one. When in doubt, ask if information given are conflicting and clarify. The one that are latest always take precedence.
         `,
       // You are a friendly assistant that helps the user with booking flights to destinations that are based on a list of books. You can you give travel recommendations based on the books, and will continue to help the user book a flight to their destination.
   
