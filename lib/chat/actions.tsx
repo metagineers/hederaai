@@ -40,6 +40,8 @@ const genAI = new GoogleGenerativeAI(
   process.env.GOOGLE_GENERATIVE_AI_API_KEY || ''
 )
 
+const embedchainUrl = process.env.NEXT_PUBLIC_EMBEDCHAIN_URL || 'http://localhost:8000/'
+
 async function describeImage(imageBase64: string) {
   'use server'
 
@@ -115,6 +117,126 @@ async function describeImage(imageBase64: string) {
       )
       uiStream.error(error)
       spinnerStream.error(error)
+      messageStream.error(error)
+      aiState.done()
+    }
+  })()
+
+  return {
+    id: nanoid(),
+    attachments: uiStream.value,
+    spinner: spinnerStream.value,
+    display: messageStream.value
+  }
+}
+
+// Query the backend
+async function submitUserQuery(content: string) {
+  'use server'
+
+  await rateLimit()
+
+  const aiState = getMutableAIState()
+
+  aiState.update({
+    ...aiState.get(),
+    messages: [
+      ...aiState.get().messages,
+      {
+        id: nanoid(),
+        role: 'user',
+        content: `${aiState.get().interactions.join('\n\n')}\n\n${content}`
+      }
+    ]
+  })
+
+  const history = aiState.get().messages.map(message => ({
+    role: message.role,
+    content: message.content
+  }))
+  console.log(history)
+
+  const textStream = createStreamableValue('')
+  const spinnerStream = createStreamableUI(<SpinnerMessage />)
+  const messageStream = createStreamableUI(null)
+  const uiStream = createStreamableUI()
+
+  // const sendQuery = async (query: string, sessionId: string) => {
+  //   try {
+  //     const response = await axios.get(
+  //       "/api/v1/chat?query=" + query + "&session_id=" + sessionId,
+  //     );
+  //     setMessages((prevMessages) => [
+  //       ...prevMessages, // Spread the previous messages
+  //       {
+  //         role: "agent",
+  //         content: response?.data?.response,
+  //       },
+  //     ]);
+  //   } catch (error) {
+  //     console.log("Error getting response from bot. Please try again.");
+  //   }
+  // };
+
+  // const sendChatMessage = async (query: string, sessionId: string) => {
+  //   await sendQuery(query, sessionId);
+  // };
+
+  ;(async () => {
+    try {
+    
+      const response = await fetch(
+        embedchainUrl + " +/api/v1/chat?query=" + content + "&session_id=" + '12345',
+      );  
+
+      let textContent = ''
+      spinnerStream.done(null)
+
+      if (response.ok) {
+        const reader = response.body.getReader();
+
+        while (true) {
+          const { done, value } = await reader.read();
+              
+          if (done) {
+                console.log("stream completed");
+                break;
+          }
+
+          const chunk = new TextDecoder("utf-8").decode(value);
+          
+          textContent += chunk;
+
+          messageStream.update(<BotMessage content={textContent} />)
+
+        }
+      }
+
+      uiStream.done()
+      textStream.done()
+      messageStream.done()
+      aiState.done({
+        ...aiState.get(),
+        messages: [
+          ...aiState.get().messages,
+          {
+            id: nanoid(),
+            role: 'assistant',
+            content: textContent
+          }
+        ]
+      })
+      // aiState.done({
+      //   ...aiState.get()
+      // })
+    } catch (e) {
+      console.error(e)
+
+      const error = new Error(
+        'The AI got rate limited, please try again later.'
+      )
+      uiStream.error(error)
+      textStream.error(error)
       messageStream.error(error)
       aiState.done()
     }
@@ -624,6 +746,7 @@ export type UIState = {
 export const AI = createAI<AIState, UIState>({
   actions: {
     submitUserMessage,
+    submitUserQuery,
     requestCode,
     validateCode,
     describeImage
@@ -662,7 +785,7 @@ export const AI = createAI<AIState, UIState>({
 
       const createdAt = new Date()
       const userId = session.user.id as string
-      const path = `/dashboard/chat/${chatId}`
+      const path = `/chat/${chatId}`
       const title = messages[0].content.substring(0, 100)
 
       const chat: Chat = {

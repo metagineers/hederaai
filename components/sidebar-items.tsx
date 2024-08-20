@@ -9,17 +9,18 @@ import { SidebarActions } from '@/components/sidebar-actions'
 import { SidebarItem } from '@/components/sidebar-item'
 
 interface SidebarItemsProps {
+  onChatChange: () => void
   chats?: Chat[]
 }
 
-export function SidebarItems({ chats }: SidebarItemsProps) {
+export function SidebarItems({ onChatChange, chats }: SidebarItemsProps) {
   if (!chats?.length) return null
 
   return (
     <>
       {chats.map((chat, index) => 
         chat && (
-          <SidebarItem key={index} index={index} chat={chat}>
+          <SidebarItem onChatChange={onChatChange} key={index} index={index} chat={chat}>
             <SidebarActions
               chat={chat}
               removeChat={removeChat}

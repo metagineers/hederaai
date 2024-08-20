@@ -25,7 +25,7 @@ async function ratelimit(req: NextRequest) {
 export async function middleware(req: NextRequest, ev: NextFetchEvent) {
   // Apply rate limiting only to specific paths
   if (req.nextUrl.pathname === '/' || 
-      req.nextUrl.pathname.startsWith('/dashboard/chat/') || 
+      req.nextUrl.pathname.startsWith('/chat/') || 
       req.nextUrl.pathname.startsWith('/share/')) {
     const ratelimitResult = await ratelimit(req)
     if (ratelimitResult) return ratelimitResult

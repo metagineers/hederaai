@@ -4,7 +4,11 @@ import { SidebarItems } from '@/components/sidebar-items'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { cache } from 'react'
 
+// sibear-xxx.tsx are all named as it was on the sidebar before.
+// TODO: need to refactor sidebar-xxx.tsx names to just chatlist-xxx.tsx
+
 interface SidebarListProps {
+  onChatChange: () => void
   userId?: string
   children?: React.ReactNode
 }
@@ -13,7 +17,7 @@ const loadChats = cache(async (userId?: string) => {
   return await getChats(userId)
 })
 
-export async function SidebarList({ userId }: SidebarListProps) {
+export async function SidebarList({ onChatChange, userId }: SidebarListProps) {
   const chats = await loadChats(userId)
 
   return (
@@ -21,7 +25,7 @@ export async function SidebarList({ userId }: SidebarListProps) {
       <div className="flex-1 overflow-auto">
         {chats?.length ? (
           <div className="space-y-2 px-2">
-            <SidebarItems chats={chats} />
+            <SidebarItems onChatChange={onChatChange} chats={chats} />
           </div>
         ) : (
           <div className="p-8 text-center">

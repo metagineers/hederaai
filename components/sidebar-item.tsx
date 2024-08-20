@@ -19,12 +19,13 @@ import { type Chat } from '@/lib/types'
 import { cn } from '@/lib/utils'
 
 interface SidebarItemProps {
+  onChatChange: () => void
   index: number
   chat: Chat
   children: React.ReactNode
 }
 
-export function SidebarItem({ index, chat, children }: SidebarItemProps) {
+export function SidebarItem({ onChatChange, index, chat, children }: SidebarItemProps) {
   const pathname = usePathname()
 
   const isActive = pathname === chat.path
@@ -36,6 +37,8 @@ export function SidebarItem({ index, chat, children }: SidebarItemProps) {
   let chatPath = ''
 
   // if the chat.path begins with /dashboard, then chatPath = /chat/${chat.id}
+  // old chats might stored with prefix /dashboard before the chat.path was updated
+  // TODO: remove /dashboard parth checks after all chats have been updated
   if (chat.path && chat.path.startsWith('/dashboard')) {
     chatPath = `/chat/${chat.id}`
   }
@@ -82,6 +85,7 @@ export function SidebarItem({ index, chat, children }: SidebarItemProps) {
           'group w-full px-8 transition-colors hover:bg-zinc-200/40 dark:hover:bg-zinc-300/10',
           isActive && 'bg-zinc-200 pr-16 font-semibold dark:bg-zinc-800'
         )}
+        onClick={onChatChange}
       >
         <div
           className="relative max-h-5 flex-1 select-none overflow-hidden text-ellipsis break-all"

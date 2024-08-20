@@ -8,10 +8,11 @@ import { buttonVariants } from '@/components/ui/button'
 import { IconPlus } from '@/components/ui/icons'
 
 interface ChatHistoryProps {
+  onChatChange: () => void
   userId?: string
 }
 
-export function ChatHistory({ userId }: ChatHistoryProps) {
+export function ChatHistory({ onChatChange, userId }: ChatHistoryProps) {
   return (
     <div className="flex h-full flex-col">
       <div className="flex items-center justify-between p-4">
@@ -19,11 +20,12 @@ export function ChatHistory({ userId }: ChatHistoryProps) {
       </div>
       <div className="mb-2 px-2">
         <Link
-          href="/dashboard/chat"
+          href="/chat"
           className={cn(
             buttonVariants({ variant: 'outline' }),
             'h-10 w-full justify-start bg-zinc-50 px-4 shadow-none transition-colors hover:bg-zinc-200/40 dark:bg-zinc-800 dark:hover:bg-zinc-700/40'
           )}
+          onClick={onChatChange}
         >
           <IconPlus className="-translate-x-2 stroke-2" />
           <h4 className="text-sm font-medium">New Chat</h4>
@@ -43,7 +45,7 @@ export function ChatHistory({ userId }: ChatHistoryProps) {
         }
       > 
         {/* @ts-ignore */}
-        <SidebarList userId={userId} /> 
+        <SidebarList onChatChange={onChatChange} userId={userId} /> 
       </React.Suspense>
     </div>
   )

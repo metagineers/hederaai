@@ -27,7 +27,7 @@ export function PromptForm({
 }) {
   const { formRef, onKeyDown } = useEnterSubmit()
   const inputRef = React.useRef<HTMLTextAreaElement>(null)
-  const { submitUserMessage, describeImage } = useActions()
+  const { submitUserMessage, submitUserQuery, describeImage } = useActions()
   const [_, setMessages] = useUIState<typeof AI>()
 
   React.useEffect(() => {
@@ -64,7 +64,7 @@ export function PromptForm({
 
         try {
           // Submit and get response message
-          const responseMessage = await submitUserMessage(value)
+          const responseMessage = await submitUserQuery(value)
           setMessages(currentMessages => [...currentMessages, responseMessage])
         } catch {
           toast(
