@@ -8,25 +8,25 @@ export function EmptyScreen() {
           Introducing RedQueen...
         </h1>
         <p className="leading-normal text-zinc-900 dark:text-zinc-100">
-          RedQueen is part of the{' '}
-          <ExternalLink href="https://hederaai.vercel.app">HederaAI</ExternalLink>, team of{' '}
-          <ExternalLink href="https://hederaai.vercel.app">
+          RedQueen is the first MVP as part of the{' '}
+          <ExternalLink href="https://hederaai.metagineers.com">HederaAI</ExternalLink>, team of{' '}
+          <ExternalLink href="https://hederaai.metagineers.com">
             AI Agents
           </ExternalLink>
           .
         </p>
         <p className="leading-normal text-zinc-900 dark:text-zinc-100">
-          RedQueen&apos;s main task is to get to know more about you so that the rest of the HederaAI{' '}
-          <ExternalLink href="https://vercel.com/blog/ai-sdk-3-generative-ui">
-            EcoSystem
+          RedQueen&apos;s main task to help you with you day to day development task on the{' '}
+          <ExternalLink href="https://hedera.com">
+            Hedera
           </ExternalLink>{' '}
-         can serve you better. Have a natural conversation with RedQueen and treat it like an inquisitive friend
-         who is trying to get to know you better. 
+          DLT.
          </p>
          <p className="leading-normal text-zinc-900 dark:text-zinc-100"> 
-          Tell it about your skills, interests, important personal 
-         information that you want to remember, your relationships and anything factual related to you that can be
-         used by the Revolving Rock team to better understand you and your needs.
+          It can answer questions you have about development, give code snippets, and even walkthrough with you on how to 
+          develop your first web3 app.</p>
+        <p className="leading-normal text-zinc-900 dark:text-zinc-100">
+         RedQueen is built with the help of Google Gemini Pro 1.5, NextJS, FastAPI, Python, NodeJS and Hedera DLT technologies
         </p>
       </div>
     </div>

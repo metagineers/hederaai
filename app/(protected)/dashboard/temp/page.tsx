@@ -5,7 +5,7 @@ import { constructMetadata } from "@/lib/utils";
 import { DashboardHeader } from "@/components/dashboard/header";
 
 export const metadata = constructMetadata({
-  title: "Chat – Revolving Rock",
+  title: "Chat – HederaAI",
   description: "Chat with RedQueen, your personal assistant.",
 });
 
