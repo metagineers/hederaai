@@ -79,7 +79,7 @@ export function DashboardSidebar({ links }: DashboardSidebarProps) {
                   {/* {isSidebarExpanded ? <ProjectSwitcher /> : null} */}
                   {isSidebarExpanded ? <>
                     <Image src={siteConfig.logo} alt={siteConfig.name} width={25} height={25} className="mx-auto"  />
-                  <h1>Revolving Rock</h1>
+                  <h1>HederaAI</h1>
                   </> : null}
                   <Button
                     variant="ghost"

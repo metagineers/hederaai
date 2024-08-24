@@ -40,7 +40,7 @@ const genAI = new GoogleGenerativeAI(
   process.env.GOOGLE_GENERATIVE_AI_API_KEY || ''
 )
 
-const embedchainUrl = process.env.NEXT_PUBLIC_EMBEDCHAIN_URL || 'http://localhost:8000/'
+const embedchainUrl = process.env.EMBEDCHAIN_URL || 'http://localhost:8000/'
 
 async function describeImage(imageBase64: string) {
   'use server'
@@ -186,7 +186,7 @@ async function submitUserQuery(content: string) {
     try {
     
       const response = await fetch(
-        embedchainUrl + " +/api/v1/chat?query=" + content + "&session_id=" + '12345',
+        embedchainUrl + "/api/v1/chat?query=" + content + "&session_id=" + '12345',
       );  
 
       let textContent = ''
@@ -366,7 +366,7 @@ async function submitUserMessage(content: string) {
         //   }
         // },
         system: `\
-        You are RedQueen, a personal assistant that is part of the WebApplication called Revolving Rock.
+        You are Sherlock, a personal assistant that is part of the WebApplication called HederaAI.
   
         The date today is ${format(new Date(), 'd LLLL, yyyy')}. 
         Your task is to obtain as much information about the user as possible especially their interests and preferences. You can ask questions to the user to get more information.
@@ -375,26 +375,10 @@ async function submitUserMessage(content: string) {
         * skills: skills the user have
         * personal: personal particular information about the user like date of birth etc
         * assets: the user have in the form of possession physical or otherwise
-        * relationships: the user's relationships with the others, such as family, friends, and acquaintances
+        * technology: the user's technological preferences
         * others: anything that doesn't fit the above categories but the user would like to remember
         The key feature of HederaAI is that you understand that information is normally changing and are not static. So every new interaction with the user, reassess the state of your knowledge and form an updated one. When in doubt, ask if information given are conflicting and clarify. The one that are latest always take precedence.
         `,
-      // You are a friendly assistant that helps the user with booking flights to destinations that are based on a list of books. You can you give travel recommendations based on the books, and will continue to help the user book a flight to their destination.
-  
-      // The date today is ${format(new Date(), 'd LLLL, yyyy')}. 
-      // The user's current location is San Francisco, CA, so the departure city will be San Francisco and airport will be San Francisco International Airport (SFO). The user would like to book the flight out on May 12, 2024.
-
-      // List United Airlines flights only.
-      
-      // Here's the flow: 
-      //   1. List holiday destinations based on a collection of books.
-      //   2. List flights to destination.
-      //   3. Choose a flight.
-      //   4. Choose a seat.
-      //   5. Choose hotel
-      //   6. Purchase booking.
-      //   7. Show boarding pass.
-      // `,
         messages: [...history]
       })
 
